@@ -1,17 +1,43 @@
+# 프로젝트 설계도 (Blueprint)
 
-## **Application Overview**
+## 1. 프로젝트 개요
+이 프로젝트는 웹 기반의 간단한 단일 페이지 애플리케이션입니다. HTML, CSS, JavaScript를 사용하여 프레임워크 없이 웹 표준에 따라 구축됩니다. 사용자 인터페이스는 직관적이고 반응형 디자인 원칙을 따르며, 재사용 가능한 웹 컴포넌트 사용을 지향합니다.
 
-This is a simple web application that generates random lottery numbers.
+## 2. 현재까지 구현된 기능
+*   **index.html**: 기본적인 웹 페이지 구조와 리소스(CSS, JavaScript) 연결.
+*   **style.css**: 기본적인 페이지 레이아웃 및 스타일.
+*   **main.js**: 초기 스크립트 로직.
 
-## **Design and Features**
+## 3. 현재 작업 계획: 다크/화이트 모드 기능 추가
 
-*   **Layout:** A clean, centered layout with a title, a container for the lottery numbers, and a button to generate new numbers.
-*   **Styling:** Modern and visually appealing design with custom fonts, colors, and animations.
-*   **Interactivity:** The "Generate Numbers" button will trigger the generation and display of new lottery numbers.
+사용자가 웹 페이지의 테마를 다크 모드와 화이트 모드 사이에서 전환할 수 있도록 하는 기능을 추가합니다. 이 기능은 사용자의 시각적 편의성을 높이고, 개인화된 경험을 제공합니다.
 
-## **Current Task: Create Lottery Number Generator**
+### 3.1. 목표
+*   다크 모드와 화이트 모드 간의 원활한 테마 전환 기능 구현.
+*   사용자의 테마 선택을 브라우저에 저장하여 페이지 재방문 시에도 동일한 테마 유지.
+*   간결하고 효율적인 CSS 변수 및 JavaScript 로직 사용.
 
-*   **Objective:** Replace the current "Hello World" content with a lottery number generator.
-*   **`index.html`:** Update the HTML structure to include a title, a place to display the numbers, and a button.
-*   **`main.js`:** Implement the JavaScript logic to generate and display the lottery numbers.
-*   **`style.css`:** Add CSS to style the new elements.
+### 3.2. 세부 구현 단계
+
+1.  **`style.css`에 CSS 변수 정의**:
+    *   `html` 또는 `:root` 선택자를 사용하여 기본 색상 변수(예: `--background-color`, `--text-color`, `--primary-color`)를 정의합니다.
+    *   `body.dark-mode` 클래스에 대한 변수를 오버라이드하여 다크 모드 테마를 정의합니다.
+
+2.  **`main.js`에 모드 전환 로직 구현**:
+    *   `localStorage`를 사용하여 사용자의 선호 테마를 저장하고 불러옵니다.
+    *   초기 로드 시 저장된 테마 설정을 적용합니다.
+    *   테마 전환 버튼 클릭 시 `body` 요소에 `dark-mode` 클래스를 토글하고 `localStorage`를 업데이트합니다.
+
+3.  **`index.html`에 모드 전환 UI 요소 추가**:
+    *   페이지에 테마 전환을 위한 버튼(예: 토글 스위치 또는 버튼)을 추가합니다.
+    *   버튼에 적절한 이벤트 리스너를 연결하여 `main.js`의 모드 전환 함수를 호출합니다.
+
+4.  **기능 테스트 및 검증**:
+    *   브라우저에서 다크/화이트 모드 전환이 올바르게 작동하는지 확인합니다.
+    *   페이지를 새로고침하거나 다시 방문했을 때 이전에 선택된 모드가 유지되는지 확인합니다.
+
+5.  **Git 커밋 및 푸시**:
+    *   모든 변경 사항을 스테이징하고, 적절한 커밋 메시지와 함께 커밋합니다.
+    *   `git push` 명령을 사용하여 변경 사항을 원격 저장소에 배포합니다.
+
+이 계획에 따라 다음 단계는 `style.css`에 다크/화이트 모드를 위한 CSS 변수를 정의하는 것입니다.

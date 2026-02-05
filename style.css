@@ -1,3 +1,23 @@
+:root {
+    --background-color: #f0f0f0;
+    --text-color: #333;
+    --container-background: #ffffff;
+    --button-background: #008CBA;
+    --button-text-color: white;
+    --lotto-number-background: #4CAF50;
+    --lotto-number-text-color: white;
+}
+
+body.dark-mode {
+    --background-color: #333;
+    --text-color: #f0f0f0;
+    --container-background: #444;
+    --button-background: #005f73;
+    --button-text-color: #f0f0f0;
+    --lotto-number-background: #028090;
+    --lotto-number-text-color: #f0f0f0;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     display: flex;
@@ -5,11 +25,13 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: var(--background-color);
 }
 
 .container {
     text-align: center;
+    background-color: var(--container-background);
+    color: var(--text-color);
 }
 
 .lotto-numbers {
@@ -22,8 +44,8 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--lotto-number-background);
+    color: var(--lotto-number-text-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,6 +60,6 @@ body {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background-color: #008CBA;
-    color: white;
+    background-color: var(--button-background);
+    color: var(--button-text-color);
 }
