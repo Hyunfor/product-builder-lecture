@@ -1,13 +1,16 @@
-       // More API functions here:                                                                                                                                                                                                                                                                              
+// More API functions here:                                                                                                                                                                                                                                                                              
        // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image                                                                                                                                                                                                           
                                                                                                                                                                                                                                                                                                                 
        // the link to your model provided by Teachable Machine export panel                                                                                                                                                                                                                                     
        const URL = "https://teachablemachine.withgoogle.com/models/jeFuiXuMf/";                                                                                                                                                                                                                                 
                                                                                                                                                                                                                                                                                                                 
        let model, webcam, labelContainer, maxPredictions;                                                                                                                                                                                                                                                       
-                                                                                                                                                                                                                                                                                                                
+       let isModelInitialized = false; // Flag to prevent re-initialization
+
        // Load the image model and setup the webcam                                                                                                                                                                                                                                                             
-       async function init() {                                                                                                                                                                                                                                                                                  
+       async function init() {
+           if (isModelInitialized) return; // Prevent multiple initializations
+
            const modelURL = URL + "model.json";                                                                                                                                                                                                                                                                 
            const metadataURL = URL + "metadata.json";                                                                                                                                                                                                                                                           
                                                                                                                                                                                                                                                                                                                 
@@ -30,7 +33,8 @@
            labelContainer = document.getElementById("label-container");                                                                                                                                                                                                                                         
            for (let i = 0; i < maxPredictions; i++) { // and class labels                                                                                                                                                                                                                                       
                labelContainer.appendChild(document.createElement("div"));                                                                                                                                                                                                                                       
-           }                                                                                                                                                                                                                                                                                                    
+           }
+           isModelInitialized = true;
        }                                                                                                                                                                                                                                                                                                        
                                                                                                                                                                                                                                                                                                                 
        async function loop() {                                                                                                                                                                                                                                                                                  
@@ -49,3 +53,40 @@
                labelContainer.childNodes[i].innerHTML = classPrediction;                                                                                                                                                                                                                                        
            }                                                                                                                                                                                                                                                                                                    
        }
+
+       document.addEventListener('DOMContentLoaded', () => {
+           const petFaceTestToggleBtn = document.getElementById('pet-face-test-toggle-btn');
+           const petFaceTestContainer = document.querySelector('.pet-face-test-container');
+
+           // Initially hide the container
+           if (petFaceTestContainer) {
+               petFaceTestContainer.style.display = 'none';
+           }
+
+           if (petFaceTestToggleBtn) {
+               petFaceTestToggleBtn.addEventListener('click', async () => {
+                   if (petFaceTestContainer.style.display === 'none') {
+                       petFaceTestContainer.style.display = 'block';
+                       await init(); // Initialize model when shown
+                   } else {
+                       // Optionally, stop webcam and hide if clicking again
+                       if (webcam) {
+                           webcam.stop();
+                           // Clear webcam container
+                           const webcamContainer = document.getElementById("webcam-container");
+                           while (webcamContainer.firstChild) {
+                               webcamContainer.removeChild(webcamContainer.lastChild);
+                           }
+                           // Clear label container
+                           if (labelContainer) {
+                               while (labelContainer.firstChild) {
+                                   labelContainer.removeChild(labelContainer.lastChild);
+                               }
+                           }
+                           isModelInitialized = false;
+                       }
+                       petFaceTestContainer.style.display = 'none';
+                   }
+               });
+           }
+       });

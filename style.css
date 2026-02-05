@@ -5,6 +5,7 @@ body {
     background-color: #f4f4f4;
     color: #333;
     transition: background-color 0.3s, color 0.3s;
+    position: relative; /* Added for absolute positioning of child elements */
 }
 
 body.dark-mode {
@@ -80,11 +81,34 @@ button:hover {
 
 #theme-toggle {
     background-color: #6c757d;
+    position: absolute; /* Changed to absolute */
+    top: 20px; /* Aligned to top */
+    right: 230px; /* Adjusted position to make space for the new button */
+    width: auto; /* Allow width to adjust to content */
+    margin: 0; /* Remove auto margin */
+    padding: 8px 15px; /* Adjust padding */
 }
 
 #theme-toggle:hover {
     background-color: #5a6268;
 }
+
+#pet-face-test-toggle-btn {
+    background-color: #ffc107; /* A distinct color for the new button */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    margin: 0;
+    padding: 8px 15px;
+    color: #333;
+    font-weight: bold;
+}
+
+#pet-face-test-toggle-btn:hover {
+    background-color: #e0a800;
+}
+
 
 /* Contact Form Styles */
 .contact-form-container form {
@@ -137,6 +161,8 @@ body.dark-mode .contact-form-container textarea {
 /* Teachable Machine styles */
 .pet-face-test-container {
     text-align: center;
+    /* Added display: none; for initial hiding, controlled by JS */
+    display: none;
 }
 
 #webcam-container {
