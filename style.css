@@ -61,7 +61,7 @@ body.dark-mode h2 {
     font-weight: bold;
 }
 
-button {
+button, .button { /* Added .button to apply general button styles */
     display: block;
     width: 200px;
     padding: 10px;
@@ -73,9 +73,11 @@ button {
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-align: center; /* Ensure text is centered for anchor buttons */
+    text-decoration: none; /* Remove underline for anchor buttons */
 }
 
-button:hover {
+button:hover, .button:hover {
     background-color: #218838;
 }
 
@@ -161,8 +163,8 @@ body.dark-mode .contact-form-container textarea {
 /* Teachable Machine styles */
 .pet-face-test-container {
     text-align: center;
-    /* Added display: none; for initial hiding, controlled by JS */
-    display: none;
+    /* Removed display: none; for initial hiding, controlled by JS */
+    /* display: none; */
 }
 
 #webcam-container {
@@ -182,4 +184,20 @@ body.dark-mode .contact-form-container textarea {
 #label-container div {
     padding: 5px 0;
     color: #007bff;
+}
+
+.back-button {
+    background-color: #6c757d; /* Grey color for back button */
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: auto;
+    margin: 0;
+    padding: 8px 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
 }
