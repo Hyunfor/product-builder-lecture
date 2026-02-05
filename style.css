@@ -1,3 +1,7 @@
+html, body {
+    scroll-behavior: smooth;
+}
+
 :root {
     --background-color: #f0f0f0;
     --text-color: #333;
@@ -21,10 +25,11 @@ body.dark-mode {
 body {
     font-family: 'Arial', sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    flex-direction: column; /* Added for vertical stacking */
+    /* justify-content: center; Removed */
+    align-items: center; /* Keep align-items for horizontal centering of blocks */
+    min-height: 100vh; /* Changed to min-height for scrollability */
+    margin: 0 auto; /* Centering content horizontally */
     background-color: var(--background-color);
 }
 
@@ -32,6 +37,9 @@ body {
     text-align: center;
     background-color: var(--container-background);
     color: var(--text-color);
+    max-width: 800px; /* Limit width */
+    width: 100%; /* Use full available width up to max-width */
+    margin-bottom: 20px; /* Space between sections */
 }
 
 .lotto-numbers {
@@ -72,8 +80,9 @@ body {
     margin-top: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
+    max-width: 800px; /* Aligned with .container */
     width: 100%;
+    margin-bottom: 20px; /* Space between sections */
 }
 
 .contact-form-container h2 {
@@ -122,4 +131,16 @@ body {
 
 .contact-form-container button[type="submit"]:hover {
     filter: brightness(1.1);
+}
+
+/* Disqus Thread Styles */
+#disqus_thread {
+    max-width: 800px; /* Aligned with other sections */
+    width: 100%;
+    margin-top: 20px; /* Space from above section */
+    margin-bottom: 40px; /* Space from bottom of the page */
+    padding: 20px; /* Add some padding to disqus container */
+    background-color: var(--container-background); /* Use theme background */
+    border-radius: 8px; /* Consistent with other sections */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent with other sections */
 }
