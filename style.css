@@ -1,19 +1,18 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding-top: 80px; /* Add padding to body to avoid content being hidden by fixed header */
     background-color: #f4f4f4;
     color: #333;
     transition: background-color 0.3s, color 0.3s;
-    position: relative; /* Added for absolute positioning of child elements */
 }
 
 body.dark-mode {
-    background-color: #333;
+    background-color: #2c2c2c;
     color: #f4f4f4;
 }
 
-.container, .contact-form-container, .pet-face-test-container {
+.container, .contact-form-container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -24,23 +23,93 @@ body.dark-mode {
 }
 
 body.dark-mode .container,
-body.dark-mode .contact-form-container,
-body.dark-mode .pet-face-test-container {
-    background-color: #555;
+body.dark-mode .contact-form-container {
+    background-color: #3a3a3a;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-h1, h2 {
+h1, h2, h3 {
     text-align: center;
     color: #333;
     transition: color 0.3s;
 }
 
 body.dark-mode h1,
-body.dark-mode h2 {
+body.dark-mode h2,
+body.dark-mode h3 {
     color: #f4f4f4;
 }
 
+p, li {
+    line-height: 1.6;
+}
+
+/* Header and Navigation */
+.site-header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+body.dark-mode .site-header {
+    background-color: #3a3a3a;
+}
+
+.navigation .nav-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+body.dark-mode .navigation .nav-logo {
+    color: #f4f4f4;
+}
+
+.navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+body.dark-mode .navigation a {
+    color: #ccc;
+}
+
+.navigation a:hover {
+    color: #007bff;
+}
+
+#theme-toggle {
+    margin: 0;
+    width: auto;
+    padding: 8px 15px;
+    background-color: #6c757d;
+}
+
+#theme-toggle:hover {
+    background-color: #5a6268;
+}
+
+/* Main Content Styles */
 .lotto-numbers {
     display: flex;
     justify-content: center;
@@ -61,10 +130,10 @@ body.dark-mode h2 {
     font-weight: bold;
 }
 
-button, .button { /* Added .button to apply general button styles */
+button, .button {
     display: block;
     width: 200px;
-    padding: 10px;
+    padding: 10px 15px;
     margin: 20px auto;
     background-color: #28a745;
     color: white;
@@ -73,46 +142,28 @@ button, .button { /* Added .button to apply general button styles */
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s;
-    text-align: center; /* Ensure text is centered for anchor buttons */
-    text-decoration: none; /* Remove underline for anchor buttons */
+    text-align: center;
+    text-decoration: none;
 }
 
 button:hover, .button:hover {
     background-color: #218838;
 }
 
-#theme-toggle {
-    background-color: #6c757d;
-    position: absolute; /* Changed to absolute */
-    top: 20px; /* Aligned to top */
-    right: 230px; /* Adjusted position to make space for the new button */
-    width: auto; /* Allow width to adjust to content */
-    margin: 0; /* Remove auto margin */
-    padding: 8px 15px; /* Adjust padding */
-}
-
-#theme-toggle:hover {
-    background-color: #5a6268;
-}
-
-#pet-face-test-toggle-btn {
-    background-color: #ffc107; /* A distinct color for the new button */
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: auto;
-    margin: 0;
-    padding: 8px 15px;
+.special-link {
+    background-color: #ffc107;
     color: #333;
     font-weight: bold;
+    font-size: 1.1em;
+    width: auto;
+    display: inline-block;
 }
 
-#pet-face-test-toggle-btn:hover {
+.special-link:hover {
     background-color: #e0a800;
 }
 
-
-/* Contact Form Styles */
+/* Form Styles */
 .contact-form-container form {
     display: flex;
     flex-direction: column;
@@ -130,34 +181,17 @@ button:hover, .button:hover {
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%;
-    box-sizing: border-box; /* Ensures padding doesn't increase total width */
+    box-sizing: border-box;
     background-color: #f8f8f8;
     color: #333;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-body.dark-mode .contact-form-container input[type="text"],
-body.dark-mode .contact-form-container input[type="email"],
+body.dark-mode .contact-form-container input,
 body.dark-mode .contact-form-container textarea {
-    background-color: #666;
+    background-color: #555;
     color: #f4f4f4;
-    border-color: #888;
-}
-
-.contact-form-container input[type="text"]:focus,
-.contact-form-container input[type="email"]:focus,
-.contact-form-container textarea:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-.contact-form-container button[type="submit"] {
-    background-color: #007bff;
-    margin: 0 auto;
-}
-
-.contact-form-container button[type="submit"]:hover {
-    background-color: #0056b3;
+    border-color: #777;
 }
 
 /* Teachable Machine styles */
@@ -165,28 +199,20 @@ body.dark-mode .contact-form-container textarea {
     text-align: center;
 }
 
-/* Removed #webcam-container styles */
-
 #image-upload {
     margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: calc(100% - 22px); /* Adjust for padding and border */
-    display: block;
-    box-sizing: border-box;
 }
 
 #uploaded-image {
     margin: 20px auto;
     border: 1px solid #ddd;
     border-radius: 8px;
-    display: block; /* Ensure it takes up full width if needed */
-    object-fit: contain; /* Ensure image scales nicely */
+    display: block;
+    object-fit: contain;
 }
 
 #predict-button {
-    background-color: #007bff; /* Blue color for predict button */
+    background-color: #007bff;
 }
 
 #predict-button:hover {
@@ -194,8 +220,8 @@ body.dark-mode .contact-form-container textarea {
 }
 
 #label-container {
-    margin-top: 10px;
-    font-size: 1.1em;
+    margin-top: 20px;
+    font-size: 1.2em;
     font-weight: bold;
 }
 
@@ -204,18 +230,31 @@ body.dark-mode .contact-form-container textarea {
     color: #007bff;
 }
 
-.back-button {
-    background-color: #6c757d; /* Grey color for back button */
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: auto;
-    margin: 0;
-    padding: 8px 15px;
-    color: white;
-    font-weight: bold;
+.disclaimer {
+    font-size: 0.9em;
+    color: #888;
+    margin-top: 20px;
 }
 
-.back-button:hover {
-    background-color: #5a6268;
+/* Footer */
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+
+body.dark-mode .site-footer {
+    background-color: #3a3a3a;
+    border-top: 1px solid #555;
+}
+
+.site-footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
 }

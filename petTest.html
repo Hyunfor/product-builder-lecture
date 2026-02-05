@@ -4,27 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-4447887851081073">
-    <title>동물상 테스트</title>
+    <title>Fun Tools - Pet Face Test</title>
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4447887851081073" crossorigin="anonymous"></script>
 </head>
 <body>
+    <header class="site-header">
+        <nav class="navigation">
+            <a href="index.html" class="nav-logo">Fun Tools</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle">Toggle Theme</button>
+    </header>
+
     <div class="container">
-        <a href="index.html" class="back-button">← Home</a>
-        <h2>동물상 테스트</h2>
+        <h2>My Pet's Face Test</h2>
+        <p>Curious to see if your pet's face is more like a cat or a dog? Upload an image of your pet's face and let our machine learning model analyze it for you! This tool is based on Google's Teachable Machine and provides a fun prediction.</p>
+        <p><strong>How to use:</strong></p>
+        <ol>
+            <li>Click "Choose File" and select a clear image of your pet's face.</li>
+            <li>Once the image appears, click the "Analyze" button.</li>
+            <li>See the results below!</li>
+        </ol>
 
         <input type="file" id="image-upload" accept="image/*">
         <img id="uploaded-image" style="max-width: 100%; max-height: 300px; display: none;">
-        <button id="predict-button" style="display: none;">분석하기</button>
+        <button id="predict-button" style="display: none;">Analyze</button>
 
         <div id="label-container"></div>
+        <p class="disclaimer"><em>Disclaimer: This is for entertainment purposes only and is not a scientific analysis. The model's accuracy may vary.</em></p>
     </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Fun Tools. All Rights Reserved.</p>
+        <a href="privacy.html">Privacy Policy</a>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="petFaceTest.js"></script>
-    <script>
-        // No direct init() call here, setup will be handled by petFaceTest.js on DOMContentLoaded
-    </script>
 </body>
 </html>
