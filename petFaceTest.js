@@ -1,56 +1,81 @@
 // More API functions here:                                                                                                                                                                                                                                                                              
-       // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image                                                                                                                                                                                                           
-                                                                                                                                                                                                                                                                                                                
-       // the link to your model provided by Teachable Machine export panel                                                                                                                                                                                                                                     
-       const URL = "https://teachablemachine.withgoogle.com/models/jeFuiXuMf/";                                                                                                                                                                                                                                 
-                                                                                                                                                                                                                                                                                                                
-       let model, webcam, labelContainer, maxPredictions;                                                                                                                                                                                                                                                       
-       // isModelInitialized flag is no longer strictly necessary as init() is called once per page load.
-       // let isModelInitialized = false; 
+// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                        
+// the link to your model provided by Teachable Machine export panel                                                                                                                                                                                                                                     
+const URL = "https://teachablemachine.withgoogle.com/models/jeFuiXuMf/";                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                        
+let model, labelContainer, maxPredictions;                                                                                                                                                                                                                                                              
+let uploadedImageElement;
+let predictButton;
+let imageUploadInput;
+                                                                                                                                                                                                                                                                                                        
+// Load the image model                                                                                                                                                                                                                                                                                  
+async function initModel() {
+    const modelURL = URL + "model.json";                                                                                                                                                                                                                                                                 
+    const metadataURL = URL + "metadata.json";                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                        
+    model = await tmImage.load(modelURL, metadataURL);                                                                                                                                                                                                                                                   
+    maxPredictions = model.getTotalClasses();                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                        
+    labelContainer = document.getElementById("label-container");                                                                                                                                                                                                                                         
+    for (let i = 0; i < maxPredictions; i++) { // and class labels                                                                                                                                                                                                                                       
+        labelContainer.appendChild(document.createElement("div"));                                                                                                                                                                                                                                       
+    }
+}                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                        
+// run the uploaded image through the image model                                                                                                                                                                                                                                                          
+async function predict() {                                                                                                                                                                                                                                                                               
+    if (!model) {
+        console.error("Model not loaded yet.");
+        return;
+    }
+    if (!uploadedImageElement || uploadedImageElement.style.display === 'none') {
+        console.error("No image uploaded or displayed for prediction.");
+        return;
+    }
 
-       // Load the image model and setup the webcam                                                                                                                                                                                                                                                             
-       async function init() {
-           // if (isModelInitialized) return; // Not needed with direct call on page load
+    // Predict can take in an image, video or canvas html element                                                                                                                                                                                                                                        
+    const prediction = await model.predict(uploadedImageElement);                                                                                                                                                                                                                                               
+    for (let i = 0; i < maxPredictions; i++) {                                                                                                                                                                                                                                                           
+        const classPrediction =                                                                                                                                                                                                                                                                          
+            prediction[i].className + ": " + prediction[i].probability.toFixed(2);                                                                                                                                                                                                                       
+        labelContainer.childNodes[i].innerHTML = classPrediction;                                                                                                                                                                                                                                        
+    }
+}
 
-           const modelURL = URL + "model.json";                                                                                                                                                                                                                                                                 
-           const metadataURL = URL + "metadata.json";                                                                                                                                                                                                                                                           
-                                                                                                                                                                                                                                                                                                                
-           // load the model and metadata                                                                                                                                                                                                                                                                       
-           // Refer to tmImage.loadFromFiles() in the API to support files from a file picker                                                                                                                                                                                                                   
-           // or files from your local hard drive                                                                                                                                                                                                                                                               
-           // Note: the pose library adds "tmImage" object to your window (window.tmImage)                                                                                                                                                                                                                      
-           model = await tmImage.load(modelURL, metadataURL);                                                                                                                                                                                                                                                   
-           maxPredictions = model.getTotalClasses();                                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                                                                                                
-           // Convenience function to setup a webcam                                                                                                                                                                                                                                                            
-           const flip = true; // whether to flip the webcam                                                                                                                                                                                                                                                     
-           webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip                                                                                                                                                                                                                                  
-           await webcam.setup(); // request access to the webcam                                                                                                                                                                                                                                                
-           await webcam.play();                                                                                                                                                                                                                                                                                 
-           window.requestAnimationFrame(loop);                                                                                                                                                                                                                                                                  
-                                                                                                                                                                                                                                                                                                                
-           // append elements to the DOM                                                                                                                                                                                                                                                                        
-           document.getElementById("webcam-container").appendChild(webcam.canvas);                                                                                                                                                                                                                              
-           labelContainer = document.getElementById("label-container");                                                                                                                                                                                                                                         
-           for (let i = 0; i < maxPredictions; i++) { // and class labels                                                                                                                                                                                                                                       
-               labelContainer.appendChild(document.createElement("div"));                                                                                                                                                                                                                                       
-           }
-           // isModelInitialized = true; // Not needed
-       }                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                                                
-       async function loop() {                                                                                                                                                                                                                                                                                  
-           webcam.update(); // update the webcam frame                                                                                                                                                                                                                                                          
-           await predict();                                                                                                                                                                                                                                                                                     
-           window.requestAnimationFrame(loop);                                                                                                                                                                                                                                                                  
-       }                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                                                
-       // run the webcam image through the image model                                                                                                                                                                                                                                                          
-       async function predict() {                                                                                                                                                                                                                                                                               
-           // predict can take in an image, video or canvas html element                                                                                                                                                                                                                                        
-           const prediction = await model.predict(webcam.canvas);                                                                                                                                                                                                                                               
-           for (let i = 0; i < maxPredictions; i++) {                                                                                                                                                                                                                                                           
-               const classPrediction =                                                                                                                                                                                                                                                                          
-                   prediction[i].className + ": " + prediction[i].probability.toFixed(2);                                                                                                                                                                                                                       
-               labelContainer.childNodes[i].innerHTML = classPrediction;                                                                                                                                                                                                                                        
-           }                                                                                                                                                                                                                                                                                                    
-       }
+document.addEventListener('DOMContentLoaded', () => {
+    uploadedImageElement = document.getElementById('uploaded-image');
+    predictButton = document.getElementById('predict-button');
+    imageUploadInput = document.getElementById('image-upload');
+
+    initModel(); // Load the model as soon as the DOM is ready
+
+    imageUploadInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                uploadedImageElement.src = e.target.result;
+                uploadedImageElement.style.display = 'block'; // Show the image
+                predictButton.style.display = 'block'; // Show the predict button
+                // Clear previous predictions
+                if (labelContainer) {
+                    while (labelContainer.firstChild) {
+                        labelContainer.removeChild(labelContainer.lastChild);
+                    }
+                }
+            };
+            reader.readAsDataURL(file);
+        } else {
+            uploadedImageElement.style.display = 'none';
+            predictButton.style.display = 'none';
+            if (labelContainer) {
+                while (labelContainer.firstChild) {
+                    labelContainer.removeChild(labelContainer.lastChild);
+                }
+            }
+        }
+    });
+
+    predictButton.addEventListener('click', predict);
+});

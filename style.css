@@ -163,16 +163,34 @@ body.dark-mode .contact-form-container textarea {
 /* Teachable Machine styles */
 .pet-face-test-container {
     text-align: center;
-    /* Removed display: none; for initial hiding, controlled by JS */
-    /* display: none; */
 }
 
-#webcam-container {
-    margin: 20px auto;
+/* Removed #webcam-container styles */
+
+#image-upload {
+    margin-bottom: 20px;
+    padding: 10px;
     border: 1px solid #ccc;
+    border-radius: 5px;
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    display: block;
+    box-sizing: border-box;
+}
+
+#uploaded-image {
+    margin: 20px auto;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    overflow: hidden; /* To ensure webcam feed respects border-radius */
-    display: inline-block; /* For centering */
+    display: block; /* Ensure it takes up full width if needed */
+    object-fit: contain; /* Ensure image scales nicely */
+}
+
+#predict-button {
+    background-color: #007bff; /* Blue color for predict button */
+}
+
+#predict-button:hover {
+    background-color: #0056b3;
 }
 
 #label-container {

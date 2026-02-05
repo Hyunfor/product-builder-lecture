@@ -10,7 +10,11 @@
     <div class="container">
         <a href="index.html" class="back-button">← Home</a>
         <h2>동물상 테스트</h2>
-        <div id="webcam-container"></div>
+
+        <input type="file" id="image-upload" accept="image/*">
+        <img id="uploaded-image" style="max-width: 100%; max-height: 300px; display: none;">
+        <button id="predict-button" style="display: none;">분석하기</button>
+
         <div id="label-container"></div>
     </div>
 
@@ -18,10 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="petFaceTest.js"></script>
     <script>
-        // Call init() automatically when the page loads
-        window.onload = function() {
-            init();
-        };
+        // No direct init() call here, setup will be handled by petFaceTest.js on DOMContentLoaded
     </script>
 </body>
 </html>
