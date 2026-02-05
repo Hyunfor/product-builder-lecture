@@ -18,7 +18,8 @@ async function initModel() {
     maxPredictions = model.getTotalClasses();                                                                                                                                                                                                                                                            
                                                                                                                                                                                                                                                                                                         
     labelContainer = document.getElementById("label-container");                                                                                                                                                                                                                                         
-    for (let i = 0; i < maxPredictions; i++) { // and class labels                                                                                                                                                                                                                                       
+    // Initial creation of prediction divs, now also recreated on image change                                                                                                                                                                                                                             
+    for (let i = 0; i < maxPredictions; i++) {                                                                                                                                                                                                                                                           
         labelContainer.appendChild(document.createElement("div"));                                                                                                                                                                                                                                       
     }
 }                                                                                                                                                                                                                                                                                                        
@@ -39,7 +40,10 @@ async function predict() {
     for (let i = 0; i < maxPredictions; i++) {                                                                                                                                                                                                                                                           
         const classPrediction =                                                                                                                                                                                                                                                                          
             prediction[i].className + ": " + prediction[i].probability.toFixed(2);                                                                                                                                                                                                                       
-        labelContainer.childNodes[i].innerHTML = classPrediction;                                                                                                                                                                                                                                        
+        // Ensure childNode exists before setting innerHTML (this is now handled by recreation logic)                                                                                                                                                                                                   
+        if (labelContainer.childNodes[i]) {
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
     }
 }
 
@@ -58,10 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 uploadedImageElement.src = e.target.result;
                 uploadedImageElement.style.display = 'block'; // Show the image
                 predictButton.style.display = 'block'; // Show the predict button
-                // Clear previous predictions
+                
+                // Clear and recreate prediction divs when a new image is loaded
                 if (labelContainer) {
                     while (labelContainer.firstChild) {
                         labelContainer.removeChild(labelContainer.lastChild);
+                    }
+                    for (let i = 0; i < maxPredictions; i++) {
+                        labelContainer.appendChild(document.createElement("div"));
                     }
                 }
             };
