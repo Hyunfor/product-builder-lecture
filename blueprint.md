@@ -41,3 +41,30 @@
     *   `git push` 명령을 사용하여 변경 사항을 원격 저장소에 배포합니다.
 
 이 계획에 따라 다음 단계는 `style.css`에 다크/화이트 모드를 위한 CSS 변수를 정의하는 것입니다.
+
+## 4. 추가 작업 계획: Formspree 제휴 문의 폼 추가
+
+사용자들이 웹 페이지를 통해 제휴 문의를 보낼 수 있도록 Formspree를 연동한 간단한 문의 폼을 추가합니다.
+
+### 4.1. 목표
+*   이름, 이메일, 문의 내용을 입력받는 기본적인 문의 폼 구현.
+*   Formspree 서비스를 이용하여 폼 데이터 전송 처리.
+*   기존 페이지 디자인과 조화로운 폼 스타일링.
+
+### 4.2. 세부 구현 단계
+
+1.  **`index.html`에 폼 요소 추가**:
+    *   `<div class="contact-form-container">` 안에 `<form>` 태그를 사용하여 이름(`input type="text"`), 이메일(`input type="email"`), 문의 내용(`textarea`) 필드와 제출 버튼을 추가합니다.
+    *   `<form>` 태그의 `action` 속성에는 Formspree에서 제공하는 엔드포인트 URL을 Placeholder로 설정하고, `method="POST"`를 지정합니다. (예: `https://formspree.io/f/your_form_id`)
+
+2.  **`style.css`에 폼 스타일 추가**:
+    *   `.contact-form-container`, `form`, `input`, `textarea`, `button[type="submit"]` 등의 요소에 대한 기본적인 패딩, 마진, 테두리, 배경색 등의 스타일을 정의하여 가독성과 사용자 경험을 개선합니다.
+    *   다크 모드에서도 적절하게 보이도록 색상 변수를 활용합니다.
+
+3.  **기능 테스트 및 검증**:
+    *   브라우저에서 폼이 올바르게 렌더링되는지 시각적으로 확인합니다.
+    *   폼의 HTML 구조와 Formspree `action` URL이 정확한지 검증합니다. (실제 폼 전송 테스트는 Formspree 설정 후 수동으로 진행)
+
+4.  **Git 커밋 및 푸시**:
+    *   모든 변경 사항을 스테이징하고, 적절한 커밋 메시지와 함께 커밋합니다.
+    *   `git push` 명령을 사용하여 변경 사항을 원격 저장소에 배포합니다.
