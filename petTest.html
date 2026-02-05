@@ -4,43 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-adsense-account" content="ca-pub-4447887851081073">
-    <title>Fun Tools - Pet Face Test</title>
+    <title>재미있는 도구 - 동물상 테스트</title>
     <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4447887851081073" crossorigin="anonymous"></script>
 </head>
 <body>
     <header class="site-header">
         <nav class="navigation">
-            <a href="index.html" class="nav-logo">Fun Tools</a>
+            <a href="index.html" class="nav-logo">재미있는 도구</a>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="about.html">소개</a></li>
             </ul>
         </nav>
-        <button id="theme-toggle">Toggle Theme</button>
+        <button id="theme-toggle">테마 전환</button>
     </header>
 
     <div class="container">
-        <h2>My Pet's Face Test</h2>
-        <p>Curious to see if your pet's face is more like a cat or a dog? Upload an image of your pet's face and let our machine learning model analyze it for you! This tool is based on Google's Teachable Machine and provides a fun prediction.</p>
-        <p><strong>How to use:</strong></p>
+        <h2>나의 동물상 테스트</h2>
+        <p>우리 반려동물의 얼굴이 고양이 또는 강아지 중 어떤 쪽에 더 가까운지 궁금하신가요? 반려동물 얼굴 이미지를 업로드하고 머신러닝 모델이 분석하게 해보세요! 이 도구는 Google의 Teachable Machine을 기반으로 하며 재미있는 예측을 제공합니다.</p>
+        <p><strong>사용 방법:</strong></p>
         <ol>
-            <li>Click "Choose File" and select a clear image of your pet's face.</li>
-            <li>Once the image appears, click the "Analyze" button.</li>
-            <li>See the results below!</li>
+            <li>"파일 선택" 버튼을 클릭하고 반려동물 얼굴이 선명하게 나온 이미지를 선택하세요.</li>
+            <li>이미지가 나타나면 "분석하기" 버튼을 클릭하세요.</li>
+            <li>아래에서 결과를 확인하세요!</li>
         </ol>
 
         <input type="file" id="image-upload" accept="image/*">
         <img id="uploaded-image" style="max-width: 100%; max-height: 300px; display: none;">
-        <button id="predict-button" style="display: none;">Analyze</button>
+        <button id="predict-button" style="display: none;">분석하기</button>
 
         <div id="label-container"></div>
-        <p class="disclaimer"><em>Disclaimer: This is for entertainment purposes only and is not a scientific analysis. The model's accuracy may vary.</em></p>
+        <p class="disclaimer"><em>면책 조항: 이 테스트는 오락 목적으로만 제공되며, 과학적인 분석이 아닙니다. 모델의 정확도는 달라질 수 있습니다.</em></p>
     </div>
 
     <footer class="site-footer">
-        <p>&copy; 2026 Fun Tools. All Rights Reserved.</p>
-        <a href="privacy.html">Privacy Policy</a>
+        <p>&copy; 2026 재미있는 도구. 모든 권리 보유.</p>
+        <a href="privacy.html">개인정보 처리방침</a>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
