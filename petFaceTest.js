@@ -38,9 +38,9 @@ async function predict() {
     // Predict can take in an image, video or canvas html element                                                                                                                                                                                                                                        
     const prediction = await model.predict(uploadedImageElement);                                                                                                                                                                                                                                               
     for (let i = 0; i < maxPredictions; i++) {                                                                                                                                                                                                                                                           
-        const classPrediction =                                                                                                                                                                                                                                                                          
-            prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(2) + "%";                                                                                                                                                                                                                       
-        // Ensure childNode exists before setting innerHTML (this is now handled by recreation logic)                                                                                                                                                                                                   
+                    let probability = prediction[i].probability * 100;
+                    let formattedProbability = Number.isInteger(probability) ? probability.toFixed(0) : probability.toFixed(2);
+                    const classPrediction = prediction[i].className + ": " + formattedProbability + "%";        // Ensure childNode exists before setting innerHTML (this is now handled by recreation logic)                                                                                                                                                                                                   
         if (labelContainer.childNodes[i]) {
             labelContainer.childNodes[i].innerHTML = classPrediction;
         }
