@@ -1,130 +1,77 @@
-# 프로젝트 설계도 (Blueprint)
+# Project Blueprint: ProductBuilder Week 1 - AdSense Optimization
 
-## 1. 프로젝트 개요
-이 프로젝트는 웹 기반의 간단한 단일 페이지 애플리케이션입니다. HTML, CSS, JavaScript를 사용하여 프레임워크 없이 웹 표준에 따라 구축됩니다. 사용자 인터페이스는 직관적이고 반응형 디자인 원칙을 따르며, 재사용 가능한 웹 컴포넌트 사용을 지향합니다.
+## Overview
 
-## 2. 현재까지 구현된 기능
-*   **index.html**: 기본적인 웹 페이지 구조와 리소스(CSS, JavaScript) 연결.
-*   **style.css**: 기본적인 페이지 레이아웃 및 스타일.
-*   **main.js**: 초기 스크립트 로직.
+This blueprint outlines the development plan for enhancing the "ProductBuilder Week 1" web project to meet Google AdSense program policies, specifically addressing issues related to "no content or low-value content" and "Google-served ads on screens with no publisher content." The goal is to create a rich, comprehensive, and perfectly structured website that will unconditionally pass AdSense review.
 
-## 3. 현재 작업 계획: 다크/화이트 모드 기능 추가
+## Project Description & Features (Current State)
 
-사용자가 웹 페이지의 테마를 다크 모드와 화이트 모드 사이에서 전환할 수 있도록 하는 기능을 추가합니다. 이 기능은 사용자의 시각적 편의성을 높이고, 개인화된 경험을 제공합니다.
+The project currently consists of a basic web structure with HTML, CSS, and JavaScript files. It appears to be a foundation for a web application, possibly related to product building or pet-related content based on file names like `petFaceTest.js` and `petTest.html`.
 
-### 3.1. 목표
-*   다크 모드와 화이트 모드 간의 원활한 테마 전환 기능 구현.
-*   사용자의 테마 선택을 브라우저에 저장하여 페이지 재방문 시에도 동일한 테마 유지.
-*   간결하고 효율적인 CSS 변수 및 JavaScript 로직 사용.
+*   **`index.html`**: The main entry point of the website.
+*   **`about.html`**: A page likely intended for "About Us" content.
+*   **`privacy.html`**: A page likely intended for a "Privacy Policy".
+*   **`ads.txt`**: AdSense publisher authorization file.
+*   **`main.js`**: Main JavaScript file for client-side logic.
+*   **`style.css`**: Main CSS file for styling.
+*   **`petFaceTest.js` / `petTest.html`**: Potentially related to a specific feature or test.
+*   **Firebase Integration**: Indicated by `.idx/mcp.json` and `firebase-debug.log`, suggesting a Firebase environment.
 
-### 3.2. 세부 구현 단계
+The current content is likely insufficient for AdSense, leading to rejection.
 
-1.  **`style.css`에 CSS 변수 정의**:
-    *   `html` 또는 `:root` 선택자를 사용하여 기본 색상 변수(예: `--background-color`, `--text-color`, `--primary-color`)를 정의합니다.
-    *   `body.dark-mode` 클래스에 대한 변수를 오버라이드하여 다크 모드 테마를 정의합니다.
+## Style, Design, and Features (Implemented)
 
-2.  **`main.js`에 모드 전환 로직 구현**:
-    *   `localStorage`를 사용하여 사용자의 선호 테마를 저장하고 불러옵니다.
-    *   초기 로드 시 저장된 테마 설정을 적용합니다.
-    *   테마 전환 버튼 클릭 시 `body` 요소에 `dark-mode` 클래스를 토글하고 `localStorage`를 업데이트합니다.
+*   **Basic HTML Structure**: Standard HTML5 markup.
+*   **External CSS**: `style.css` for visual presentation.
+*   **External JavaScript**: `main.js` for interactivity.
+*   **Minimal Content**: As per AdSense rejection, content is currently sparse.
+*   **No specific design system or framework**: Uses vanilla HTML, CSS, JS.
 
-3.  **`index.html`에 모드 전환 UI 요소 추가**:
-    *   페이지에 테마 전환을 위한 버튼(예: 토글 스위치 또는 버튼)을 추가합니다.
-    *   버튼에 적절한 이벤트 리스너를 연결하여 `main.js`의 모드 전환 함수를 호출합니다.
+## Plan for Current Request: AdSense Approval
 
-4.  **기능 테스트 및 검증**:
-    *   브라우저에서 다크/화이트 모드 전환이 올바르게 작동하는지 확인합니다.
-    *   페이지를 새로고침하거나 다시 방문했을 때 이전에 선택된 모드가 유지되는지 확인합니다.
+The following steps will be undertaken to achieve a rich and AdSense-compliant website:
 
-5.  **Git 커밋 및 푸시**:
-    *   모든 변경 사항을 스테이징하고, 적절한 커밋 메시지와 함께 커밋합니다.
-    *   `git push` 명령을 사용하여 변경 사항을 원격 저장소에 배포합니다.
+### 1. Create/Update `blueprint.md` (Completed)
+    *   Document the existing structure and outline all changes planned.
 
-이 계획에 따라 다음 단계는 `style.css`에 다크/화이트 모드를 위한 CSS 변수를 정의하는 것입니다.
+### 2. Review Existing Content (Completed)
+    *   Read and analyze `index.html`, `about.html`, `privacy.html`, `style.css`, and `main.js` to understand their current content and structure.
 
-## 4. 추가 작업 계획: Formspree 제휴 문의 폼 추가
+### 3. Enhance `index.html` (Homepage) (Completed)
+    *   Add a compelling hero section with a clear value proposition related to product building or the site's core theme.
+    *   Integrate rich, unique content describing the site's purpose, features, or services. This will include multiple sections of text and relevant information.
+    *   Include relevant, high-quality placeholder images (with appropriate `alt` text) to break up text and improve visual appeal.
+    *   Ensure clear call-to-action elements for user engagement.
+    *   Improve semantic HTML structure using appropriate tags (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`).
 
-사용자들이 웹 페이지를 통해 제휴 문의를 보낼 수 있도록 Formspree를 연동한 간단한 문의 폼을 추가합니다.
+### 4. Enhance `about.html` (About Us Page) (Completed)
+    *   Expand the content significantly to tell a detailed story about the site's mission, vision, values, team, and history.
+    *   Add placeholder images (e.g., "team photos," "mission statement visuals").
+    *   Improve semantic HTML structure.
 
-### 4.1. 목표
-*   이름, 이메일, 문의 내용을 입력받는 기본적인 문의 폼 구현.
-*   Formspree 서비스를 이용하여 폼 데이터 전송 처리.
-*   기존 페이지 디자인과 조화로운 폼 스타일링.
+### 5. Enhance `privacy.html` (Privacy Policy Page) (Completed)
+    *   Generate a comprehensive and detailed placeholder privacy policy that clearly outlines data collection, usage, cookies, and user rights. While not legal advice, this will be a robust, AdSense-compliant placeholder.
 
-### 4.2. 세부 구현 단계
+### 6. Create `terms.html` (Terms of Service Page) (Completed)
+    *   Develop a new page (`terms.html`) with a detailed Terms of Service document. This will cover user responsibilities, acceptable use, intellectual property, disclaimers, and limitations of liability.
 
-1.  **`index.html`에 폼 요소 추가**:
-    *   `<div class="contact-form-container">` 안에 `<form>` 태그를 사용하여 이름(`input type="text"`), 이메일(`input type="email"`), 문의 내용(`textarea`) 필드와 제출 버튼을 추가합니다.
-    *   `<form>` 태그의 `action` 속성에는 Formspree에서 제공하는 엔드포인트 URL을 Placeholder로 설정하고, `method="POST"`를 지정합니다. (예: `https://formspree.io/f/your_form_id`)
+### 7. Create `contact.html` (Contact Us Page) (Completed)
+    *   Develop a new page (`contact.html`) providing clear contact information (email, address placeholder) and a simple, placeholder contact form to enhance user interaction and trust.
 
-2.  **`style.css`에 폼 스타일 추가**:
-    *   `.contact-form-container`, `form`, `input`, `textarea`, `button[type="submit"]` 등의 요소에 대한 기본적인 패딩, 마진, 테두리, 배경색 등의 스타일을 정의하여 가독성과 사용자 경험을 개선합니다.
-    *   다크 모드에서도 적절하게 보이도록 색상 변수를 활용합니다.
+### 8. Improve Navigation & Footer (Completed)
+    *   Update the header navigation on all HTML pages to include links to `Home`, `About`, `Privacy Policy`, `Terms of Service`, and `Contact Us`.
+    *   Implement a consistent footer across all pages containing links to `Privacy Policy`, `Terms of Service`, and copyright information.
 
-3.  **기능 테스트 및 검증**:
-    *   브라우저에서 폼이 올바르게 렌더링되는지 시각적으로 확인합니다.
-    *   폼의 HTML 구조와 Formspree `action` URL이 정확한지 검증합니다. (실제 폼 전송 테스트는 Formspree 설정 후 수동으로 진행)
+### 9. Modernize `style.css` (Completed)
+    *   Apply a clean, modern, and visually appealing design.
+    *   Enhance typography (font families, sizes, line heights) for readability.
+    *   Define a coherent color palette using CSS variables.
+    *   Ensure generous and consistent spacing.
+    *   Implement responsive design principles using media queries, Flexbox, and/or Grid to ensure optimal display on various screen sizes.
 
-4.  **Git 커밋 및 푸시**:
-    *   모든 변경 사항을 스테이징하고, 적절한 커밋 메시지와 함께 커밋합니다.
-    *   `git push` 명령을 사용하여 변경 사항을 원격 저장소에 배포합니다.
+### 10. Implement a Web Component (Completed)
+    *   As per `GEMINI.md` guidelines, define a custom element (e.g., a reusable alert message or an interactive card component) in `main.js`.
+    *   Integrate and demonstrate the use of this Web Component on at least one HTML page (e.g., `index.html`).
 
-## 5. 추가 작업 계획: Disqus 댓글 기능 추가
-
-페이지 하단에 Disqus 댓글 기능을 추가하여 사용자들이 웹 페이지 콘텐츠에 대한 의견을 나눌 수 있도록 합니다.
-
-### 5.1. 목표
-*   Disqus 댓글 스레드를 페이지에 성공적으로 통합.
-*   Disqus 스크립트 설정에 페이지 URL 및 고유 식별자 적용.
-
-### 5.2. 세부 구현 단계
-
-1.  **`index.html`에 Disqus 요소 추가**:
-    *   제공된 `<div id="disqus_thread"></div>` 요소를 Formspree 문의 폼 아래에 추가합니다.
-    *   제공된 Disqus 임베드 스크립트를 `disqus_thread` div 바로 아래에 추가합니다.
-    *   Disqus 스크립트 내에서 `var disqus_config = function () { ... };` 주석을 해제하고, `this.page.url`을 현재 페이지의 절대 URL로 설정(`window.location.href`)하고, `this.page.identifier`를 이 페이지의 고유 식별자(예: `'lotto-generator-page'`)로 설정합니다.
-
-2.  **기능 테스트 및 검증**:
-    *   브라우저에서 페이지를 열어 Disqus 댓글 스레드가 올바르게 로드되고 표시되는지 시각적으로 확인합니다.
-    *   (필요한 경우) 개발자 도구를 사용하여 Disqus 관련 스크립트 로드 오류가 없는지 확인합니다.
-
-3.  **Git 커밋 및 푸시**:
-    *   모든 변경 사항을 스테이징하고, 적절한 커밋 메시지와 함께 커밋합니다.
-    *   `git push` 명령을 사용하여 변경 사항을 원격 저장소에 배포합니다.
-
-4.  **문제 해결 및 재검증**:
-    *   **`disqus_config` 변수 정의 위치 조정**: `embed.js` 스크립트가 로드되기 전에 `disqus_config`가 전역 스코프에서 명확하게 정의되도록 코드 순서를 조정합니다. (이미 이전에 수행함)
-    *   **`page.url` 임시 변경**: 로컬 테스트 환경(예: `file:///` 프로토콜)에서 발생할 수 있는 문제를 해결하기 위해 `disqus_config` 내 `this.page.url`을 임시로 `http://localhost:8000/index.html`과 같은 개발 서버 주소로 하드코딩합니다. (사용자는 실제 웹 서버를 해당 포트로 실행해야 함)
-    *   **재검증**:
-        *   웹 서버를 실행한 상태에서 브라우저로 페이지에 접속합니다.
-        *   Disqus 댓글 스레드가 올바르게 로드되고 표시되는지 확인합니다.
-        *   개발자 도구의 콘솔 및 네트워크 탭에서 Disqus 관련 오류가 없는지 확인합니다.
-        *   (중요) 사용자에게 Disqus Shortname (`productbuilder-1q7cq0kgdp`)이 올바른지 다시 한번 확인을 요청합니다.
-
-## 6. 추가 작업 계획: 페이지 레이아웃 세로 정렬
-
-로또 번호 추첨, 제휴 문의 폼, Disqus 댓글 섹션이 페이지에서 세로로 깔끔하게 배치되도록 레이아웃을 수정합니다.
-
-### 6.1. 목표
-*   모든 주요 콘텐츠 섹션이 세로 방향으로 정렬되어 사용자 친화적인 레이아웃 제공.
-*   댓글 기능이 숨겨지지 않고 화면에 명확하게 표시되도록 보장.
-*   다크/화이트 모드 전환 시에도 레이아웃이 올바르게 유지되도록 합니다.
-
-### 6.2. 세부 구현 단계
-
-1.  **`style.css` 수정**:
-    *   `body` 셀렉터에 `flex-direction: column;`을 추가하여 자식 요소들을 세로로 정렬합니다.
-    *   `body` 셀렉터의 `height: 100vh;`를 `min-height: 100vh;`로 변경하여 콘텐츠가 화면을 넘어갈 경우 스크롤이 가능하도록 합니다.
-    *   `body` 셀렉터의 `justify-content`와 `align-items` 속성을 제거합니다. (각 섹션 내부의 정렬은 개별적으로 처리)
-    *   `.container`, `.contact-form-container`, `disqus_thread`와 같은 주요 섹션 요소들이 `width: 100%;` (또는 `max-width`로 제한)를 가지도록 조정하여 전체 가로 공간을 사용하도록 합니다.
-    *   각 섹션 사이에 `margin-bottom`을 추가하여 시각적인 구분을 명확히 합니다.
-    *   `html, body`에 `scroll-behavior: smooth;`를 추가하여 부드러운 스크롤을 구현합니다.
-
-2.  **기능 테스트 및 시각적 검증**:
-    *   브라우저에서 페이지를 열어 로또, 문의, 댓글 섹션이 세로로 올바르게 배치되었는지 확인합니다.
-    *   다크/화이트 모드를 전환했을 때도 레이아웃이 깨지지 않는지 확인합니다.
-    *   댓글 기능이 화면에 가려지지 않고 온전히 표시되는지 확인합니다.
-
-3.  **Git 커밋 및 푸시**:
-    *   모든 변경 사항을 스테이징하고, 적절한 커밋 메시지와 함께 커밋합니다.
-    *   `git push` 명령을 사용하여 변경 사항을 원격 저장소에 배포합니다.
+### 11. Verify Firebase Studio Configuration (Completed)
+    *   Check the `.idx/mcp.json` file. If the `firebase` server configuration is missing, it will be added as specified in `GEMINI.md`.
